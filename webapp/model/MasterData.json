@@ -1,0 +1,28 @@
+{
+    "MasterData":[
+        {
+            "UserName":"Zaid",
+            "CompanyName":"C.R.T.U",
+            "TotalAmount":24390.34,
+            "DeliveryDate":"11/03/2024",
+            "PurchaseID":123899,
+              "AddressTo":"8793 Royal Row, West Lawerencebury, MN 32150-6446"
+     },
+        {
+            "UserName":"Dev",
+            "CompanyName":"IBM",
+            "TotalAmount":248970.34,
+            "DeliveryDate":"09/04/2024",
+            "PurchaseID":123897,
+            "AddressTo":"333 Golden Valley, North Victoria, OH 86220"
+        },
+        {
+            "UserName":"Ahmed",
+            "CompanyName":"Daffodils",
+            "TotalAmount":2434230.34,
+            "DeliveryDate":"08/02/2024",
+            "PurchaseID":123509,
+            "AddressTo":"Apt. 103 292 Kirk River, Jeremystad, ME 20958"
+        }
+    ]
+}

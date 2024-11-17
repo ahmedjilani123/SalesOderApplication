@@ -1,0 +1,13 @@
+{
+    "subItem":[
+        {
+            "PurchaseID":1238999,
+            "CategoryName":"Laptop",
+            "ProductName":"Xiaomi",
+            "CreateDate":"07/06/2024",
+            "Quantity":3,
+            "Price":2000.90,
+            "GrossAmount":6000.270
+        }
+    ]
+}

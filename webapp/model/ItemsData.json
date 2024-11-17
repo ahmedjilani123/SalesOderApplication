@@ -1,0 +1,28 @@
+{
+    "ItemsData":[
+        {
+            "PurchaseID":123509,
+            "CategoryName":"Laptop",
+            "TotalAmount":4309.65,
+            "ModifyDate":"07/03/2024",
+            "UserName":"John Smith",
+            "ItemsLength":12
+        },
+        {
+            "PurchaseID":123897,
+            "CategoryName":"Mobile",
+            "TotalAmount":4309.65,
+            "ModifyDate":"08/02/2024",
+            "UserName":"John Smith",
+            "ItemsLength":12
+        },
+        {
+            "PurchaseID":123899,
+            "CategoryName":"Mobile",
+            "TotalAmount":4309.65,
+            "ModifyDate":"05/04/2024",
+            "UserName":"Dev Patel",
+            "ItemsLength":18
+        }
+    ]
+}

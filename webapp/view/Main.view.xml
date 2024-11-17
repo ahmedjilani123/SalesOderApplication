@@ -1,0 +1,358 @@
+<mvc:View
+    xmlns:f2="sap.f"
+    controllerName="sap.aj.controller.Main"
+    displayBlock="true"
+    	xmlns:tnt="sap.tnt"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    core:require="{
+		formatter: 'sap/aj/model/formatter'
+	}"
+    height="100%"
+>
+    <Page
+        title="{i18n>appTitle}"
+        id="page"
+        showHeader="false"
+    >
+    <!-- <customHeader>
+    <Bar >
+    <contentLeft>
+    <Title text="Sales Order Managements"></Title>
+    </contentLeft>
+    <contentRight>
+    <Avatar active="true" displaySize="XS" displayShape="Circle"  press="onAvatarPress" showBorder="true"></Avatar>
+    </contentRight>
+    </Bar>
+    </customHeader> -->
+    
+    
+        <content>
+        <tnt:ToolHeader id="shellLikeToolHeaderOnlyMandatoryControls" class=" ">
+			<Image src="../Images/logo.png" decorative="false" press="onLogoPressed" tooltip="SAP Logo">
+				<layoutData>
+					<OverflowToolbarLayoutData priority="NeverOverflow"/>
+				</layoutData>
+			</Image>
+			<Title text="Sales Orders" wrapping="true">
+				<layoutData>
+					<OverflowToolbarLayoutData priority="Disappear"/>
+				</layoutData>
+			</Title>
+			<ToolbarSpacer />
+			<Avatar initials="UI" displaySize="XS" press=".onAvatarPressed" active="true" tooltip="Profile">
+				<layoutData>
+					<OverflowToolbarLayoutData priority="NeverOverflow"/>
+				</layoutData>
+			</Avatar>
+		</tnt:ToolHeader>
+          
+
+            <SplitContainer
+                id="SplitContDemo"
+                initialDetail="detail"
+                initialMaster="master"
+            >
+                <detailPages>
+                    <Page
+                        id="default"
+                        title=" Information About Order "
+                        backgroundDesign="Solid"
+                        showNavButton="false"
+                    >
+                        <content>
+                            <IllustratedMessage
+                                enableVerticalResponsiveness="true"
+                                illustrationType="sapIllus-NoActivities"
+                            >
+                                <additionalContent>
+                                    <Button text="Add Activity" />
+                                </additionalContent>
+                            </IllustratedMessage>
+                        </content>
+                    </Page>
+                    <Page
+                        id="detail"
+                        title=" Information About Order "
+                        backgroundDesign="Solid"
+                        showNavButton="true"
+                        navButtonPress=".onPressDetailBack"
+                    >
+                        <content>
+                            <ObjectHeader
+                                backgroundDesign="Solid"
+                                intro="Order By {MasterDatas>UserName}"
+                                title="{MasterDatas>CompanyName}"
+                                number="{MasterDatas>TotalAmount}"
+                                numberUnit="INR"
+                                class="sapUiResponsivePadding--header"
+                            >
+                                <statuses>
+                                    <ObjectStatus
+                                        text="In Stock"
+                                        state="Success"
+                                    />
+                                </statuses>
+                                <ObjectAttribute
+                                    text="{MasterDatas>DeliveryDate}"
+                                />
+                            </ObjectHeader>
+                            <Panel
+                                headerText="General Information"
+                                class="sapUiResponsiveMargin"
+                                width="auto"
+                            >
+                                <content>
+                                    <f:SimpleForm
+                                        id="SimpleFormChange354"
+                                        editable="true"
+                                        layout="ResponsiveGridLayout"
+                                        labelSpanXL="3"
+                                        labelSpanL="3"
+                                        labelSpanM="3"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="false"
+                                        emptySpanXL="4"
+                                        emptySpanL="4"
+                                        emptySpanM="4"
+                                        emptySpanS="0"
+                                        columnsXL="1"
+                                        columnsL="1"
+                                        columnsM="1"
+                                        singleContainerFullSize="false"
+                                    >
+                                        <f:content>
+                                            <Label
+                                                text="Purchase ID"
+                                                showColon="true"
+                                            />
+                                            <Title
+                                                text="{MasterDatas>PurchaseID}"
+                                                class="sapUiTinyMarginTop"
+                                            />
+
+                                            <Label
+                                                text="Delivery Date"
+                                                showColon="true"
+                                            />
+                                            <Title
+                                                text="{MasterDatas>DeliveryDate}"
+                                                class="sapUiTinyMarginTop"
+                                            />
+                                            <Label
+                                                text="Address To"
+                                                showColon="true"
+                                            />
+                                            <Title
+                                                text="{MasterDatas>AddressTo}"
+                                                class="sapUiTinyMarginTop"
+                                            />
+                                        </f:content>
+                                    </f:SimpleForm>
+                                </content>
+                            </Panel>
+                            <Panel
+                                headerText="All Items"
+                                class="sapUiResponsiveMargin"
+                                width="100%"
+                            >
+                                <content>
+                                    <Table
+                                        items="{ItemsDatas>/ItemsData}"
+                                        id="itemTable"  inset="true" 
+                                    >
+                                    <columns>
+                                            <Column    importance="High">
+                                                <Label text="Category" />
+                                            </Column>
+                                            <Column   demandPopin="true" minScreenWidth="543px"  importance="Low">
+                                                <Label text="Delivery Date" />
+                                            </Column>
+                                            <Column  demandPopin="true" minScreenWidth="543px" importance="Low">
+                                                <Label text="User Name" />
+                                            </Column>
+                                            <Column  importance="High">
+                                                <Label text="Items" />
+                                            </Column>
+                                            <Column  importance="High">
+                                                <Label text="Total Amount" />
+                                            </Column>
+                                        </columns>
+                                        <items>
+                                            <ColumnListItem
+                                                type="Navigation"
+                                                press="NavigationToItem"
+                                            >
+                                                <cells>
+                                                    <Text
+                                                        text="{ItemsDatas>CategoryName}"
+                                                    />
+                                                    <Text
+                                                        text="{ItemsDatas>ModifyDate}"
+                                                    />
+                                                    <Text
+                                                        text="{ItemsDatas>UserName}"
+                                                    />
+                                                    <Text
+                                                        text="{ItemsDatas>ItemsLength}"
+                                                    />
+                                                    <Text
+                                                        text="{ItemsDatas>TotalAmount}"
+                                                    />
+                                                </cells>
+                                            </ColumnListItem>
+                                        </items>
+                                        
+                                    </Table>
+                                </content>
+                            </Panel>
+                        </content>
+                        <footer>
+                            <Bar>
+                                <contentLeft>
+                                    <Button
+                                        text="Confirm"
+                                        id="idConfirmButton"
+                                        enabled="false"
+                                        type="Ghost"
+                                        press="confirmDataUPdate"
+                                    />
+                                </contentLeft>
+                                <contentRight>
+                                    <Button
+                                        text="Create"
+                                        type="Emphasized"
+                                        press="CreateOderPro" ariaHasPopup="Create" tooltip="Create Oder Item"  ariaLabelledBy="Create Order Item"
+                                    />
+                                </contentRight>
+                            </Bar>
+                        </footer>
+                    </Page>
+                    <Page
+                        id="ItemDetails"
+                        title="Item Details"
+                        backgroundDesign="Solid"
+                        showNavButton="true"
+                        navButtonPress=".onPressDetailBack"
+                    >
+                        <mvc:XMLView
+                            viewName="sap.aj.view.ViewData"
+                            type="XML"
+                        />
+                    </Page>
+                    <Page
+                        id="CreatePage"
+                        title="Created Item Order"
+                        backgroundDesign="Solid"
+                        showNavButton="true"
+                        navButtonPress=".onPressDetailBack"
+                    >
+                        <mvc:XMLView
+                            viewName="sap.aj.view.CreateDataItem"
+                            type="XML"
+                        />
+
+                        <footer>
+                            <OverflowToolbar>
+                                <ToolbarSpacer />
+                                <Button
+                                    type="Reject"
+                                    text="Cancel"
+                                    press=".onPressCreateDetailBack"
+                                />
+                                <Button
+                                    type="Emphasized"
+                                    text="Submit"
+                                    press="ProductIsSubmit"
+                                />
+                            </OverflowToolbar>
+                        </footer>
+                    </Page>
+                    <Page
+                        id="ConfirmData"
+                        title="Product Item Confirmation"
+                        backgroundDesign="Solid"
+                        showNavButton="true"
+                        navButtonPress=".onPressDetailBack"
+                    >
+                        <mvc:XMLView
+                            viewName="sap.aj.view.ConfirmData"
+                            type="XML"
+                        />
+                        <footer>
+                            <Bar>
+                                <contentRight>
+                                    <Button
+                                        text="Cancel"
+                                        press="onCancelButtonPressView"
+                                    />
+                                    <Button
+                                        text="Confirm"
+                                        press="onConfirmButtonPressView"
+                                    />
+                                </contentRight>
+                            </Bar>
+                        </footer>
+                    </Page>
+                </detailPages>
+                <masterPages>
+                    <Page
+                        id="master"
+                    
+                        backgroundDesign="List"
+                        showHeader="true"
+                    >
+                    <customHeader>
+                    <Bar >
+                    <contentMiddle>
+                    <Title text="Order List"></Title>
+                    </contentMiddle>
+                    <contentRight>
+                    <Button icon="sap-icon://refresh" press="refreshbuttonPress"></Button>
+                    </contentRight>
+                    </Bar>
+                    </customHeader>
+                   <Toolbar >
+                   <SearchField search="searchMasterDataPress"></SearchField>
+                   </Toolbar>
+                        <List items="{MasterFilterData>/MasterData}" id="MasterListItem">
+                            <ObjectListItem
+                                title="{MasterFilterData>CompanyName}"
+                                intro="Order By {MasterFilterData>UserName}"
+                                type="Active"
+                                press="onListItemPress"
+                                number="{MasterFilterData>TotalAmount}"
+                                numberUnit="INR"
+                            >
+                                <firstStatus>
+                                    <ObjectStatus
+                                        text="{MasterFilterData>CreateDate}"
+                                    />
+                                </firstStatus>
+                                <ObjectAttribute text="{MasterFilterData>DeliveryDate}"></ObjectAttribute>
+                                <ObjectAttribute text="{MasterFilterData>PurchaseID}"></ObjectAttribute>
+                                <ObjectAttribute text="{MasterFilterData>AddressTo}"></ObjectAttribute>
+                            </ObjectListItem>
+                        </List>
+                        <footer>
+                            <Bar
+                                design="Auto"
+                                titleAlignment="None"
+                            >
+                               
+                                <contentRight>
+                                <Button icon="sap-icon://add" press="AddMasterDataPress"></Button>
+                                <ToggleButton icon="sap-icon://sorting-ranking" pressed="false" press="SortingMasterDataPress"/>
+                                <Button icon="sap-icon://filter" ariaHasPopup="Filter Dialog" press="onFilterButtonPress"></Button>
+                                
+                                </contentRight>
+                            </Bar>
+                        </footer>
+                    </Page>
+                </masterPages>
+            </SplitContainer>
+        </content>
+    </Page>
+</mvc:View>

@@ -1,0 +1,31 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+>
+<Popover
+	
+		title="Filters"
+		class="sapUiResponsivePadding--header sapUiResponsivePadding--footer"
+		placement="Top"
+		initialFocus="Filters">
+		<footer>
+			<OverflowToolbar>
+			
+				<Button text="Cancel" press="FilterObjectCancelPress"></Button>
+				<ToolbarSpacer ></ToolbarSpacer>
+				<Button text="Ok"  press="FilterObjectOkPress"></Button>
+			</OverflowToolbar>
+		</footer>
+		<List mode="MultiSelect" items="{DisplayKey>/FilterKey}" selectionChange="FilterSelectionChangePress">
+	<infoToolbar>
+			<OverflowToolbar>
+				<Label text='Selected Items'/>
+				<ToolbarSpacer ></ToolbarSpacer>
+				<Label text="" id="countSelectedItem"></Label>
+			</OverflowToolbar>
+		</infoToolbar>
+		<StandardListItem title="{DisplayKey>filterKey}" ></StandardListItem>
+		</List>
+		
+	</Popover>
+</c:FragmentDefinition>

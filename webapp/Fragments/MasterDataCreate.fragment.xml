@@ -1,0 +1,59 @@
+<c:FragmentDefinition
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+>
+    <Dialog title="Create Master Data" draggable="true">
+        <content>
+            <form:SimpleForm>
+                <form:content>
+                    <Label
+                        showColon="true"
+                        text="User Name"
+                    />
+                    <Input id="UserNameMasterID"
+                        type="Text"
+                        value="{MasterDataCreated>/UserName}"
+                    />
+
+                    <Label
+                        showColon="true"
+                        text="Company Name"
+                    />
+                    <Input id="CompanyNameMasterID"
+                        type="Text"
+                        value="{MasterDataCreated>/CompanyName}"
+                    />
+
+                    <Label text="Total Amount" />
+                    <Input id="TotalAmountMasterID"
+                        type="Number"
+                        value="{MasterDataCreated>/TotalAmount}"
+                    />
+
+                    <!-- <Label  showColon="true" text="Delivery Date" />
+				<Input  value="{MasterDataCreated>/DeliveryDate}" /> -->
+
+                    <Label
+                        showColon="true"
+                        text="Address To"
+                    />
+                    <TextArea value="{MasterDataCreated>/AddressTo}"  id="AddressToMasster"/>
+                </form:content>
+            </form:SimpleForm>
+        </content>
+        <endButton>
+            <Button
+                type="Emphasized"
+                text="Save"
+                press="SaveMasterDataPress"
+            />
+        </endButton>
+        <beginButton>
+            <Button
+                text="Cancel"
+                press="CloseMasterDataPress"
+            />
+        </beginButton>
+    </Dialog>
+</c:FragmentDefinition>

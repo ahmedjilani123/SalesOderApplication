@@ -1,0 +1,128 @@
+{
+	"_version": "1.12.0",
+
+	"sap.app": {
+		"id": "CreateData",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "${version}"
+		},
+		"dataSources": {
+			"mainData":{
+				"uri":"./model/MasterData.json",
+				"type": "JSON"
+			},
+			"itemData":{
+				"uri":"./model/ItemsData.json",
+				"type": "JSON"
+			},
+			"subItemData":{
+				"uri":"./model/subItems.json",
+				"type": "JSON"
+			}
+		}
+	},
+
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "sap.aj.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+
+		"dependencies": {
+			"minUI5Version": "1.124.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+
+		"handleValidation": true,
+
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "sap.aj.i18n.i18n"
+				}
+			},
+			"MasterDatas":{
+				"dataSource": "mainData",
+				"type": "sap.ui.model.json.JSONModel"
+			},
+			"ItemsDatas":{
+				"dataSource": "itemData",
+				"type": "sap.ui.model.json.JSONModel"
+			},
+			"SubItemDatas":{
+				"dataSource": "subItemData",
+				"type": "sap.ui.model.json.JSONModel"
+			},
+			"createDataProduct":{
+				"type": "sap.ui.model.json.JSONModel"
+			},
+			"createCateProduct":{
+				"type": "sap.ui.model.json.JSONModel"
+			},
+			"FilterDataProduct":{
+				"type": "sap.ui.model.json.JSONModel"
+			},
+			"comboboxData":{
+				"type": "sap.ui.model.json.JSONModel"
+			},
+			"DisplayKey":{
+				"type": "sap.ui.model.json.JSONModel"
+			},
+			"MasterFilterData":{
+				"type": "sap.ui.model.json.JSONModel"
+			},
+			"MasterDataCreated":{
+				"type": "sap.ui.model.json.JSONModel"
+			}
+		},
+
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "sap.aj.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"async": true
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "main",
+					"target": "main"
+				}
+			],
+			"targets": {
+				"main": {
+					"viewId": "main",
+					"viewName": "Main"
+				}
+			}
+		}
+	}
+}

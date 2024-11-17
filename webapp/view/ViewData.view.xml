@@ -1,0 +1,114 @@
+<mvc:View
+	displayBlock="true"
+	xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+     xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:mvc="sap.ui.core.mvc">
+      <ObjectHeader
+                                backgroundDesign="Solid"
+                                intro="Order By {MasterDatas>UserName}"
+                                title="{MasterDatas>CompanyName}"
+                                number="{MasterDatas>TotalAmount}"
+                                numberUnit="USD"
+                                class="sapUiResponsivePadding--header"
+                            >
+                                <statuses>
+                                    <ObjectStatus
+                                        text="In Stock"
+                                        state="Success"
+                                    />
+                                </statuses>
+                                <ObjectAttribute
+                                    text="{MasterDatas>CreateDate}"
+                                />
+                            </ObjectHeader>
+                            <Panel
+                                headerText="General Information"
+                                class="sapUiResponsiveMargin"
+                                width="auto"
+                            >
+                                <content>
+                                    <f:SimpleForm
+                                        id="SimpleFormChange354"
+                                        editable="true"
+                                        layout="ResponsiveGridLayout"
+                                        labelSpanXL="3"
+                                        labelSpanL="3"
+                                        labelSpanM="3"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="false"
+                                        emptySpanXL="4"
+                                        emptySpanL="4"
+                                        emptySpanM="4"
+                                        emptySpanS="0"
+                                        columnsXL="1"
+                                        columnsL="1"
+                                        columnsM="1"
+                                        singleContainerFullSize="false"
+                                    >
+                                        <f:content>
+                                            <Label
+                                                text="Purchase ID"
+                                                showColon="true"
+                                            />
+                                            <Title
+                                                text="{MasterDatas>PurchaseID}"
+                                                class="sapUiTinyMarginTop"
+                                            />
+
+                                            <Label
+                                                text="Created Date"
+                                                showColon="true"
+                                            />
+                                            <Title
+                                                text="{MasterDatas>DeliveryDate}"
+                                                class="sapUiTinyMarginTop"
+                                            />
+                                            <Label
+                                                text="Address To"
+                                                showColon="true"
+                                            />
+                                            <Title
+                                                text="{MasterDatas>AddressTo}"
+                                                class="sapUiTinyMarginTop"
+                                            />
+                                        </f:content>
+                                    </f:SimpleForm>
+                                </content>
+                            </Panel>
+<Panel  class="sapUiResponsiveMargin">
+<content>
+<Table items="{SubItemDatas>/FilterData}" id="ItemViewTable" inset="true">
+<items >
+<ColumnListItem >
+<cells>
+<Text text="{SubItemDatas>ProductName}"></Text>
+<Text text="{SubItemDatas>CreateDate}"></Text>
+<Text text="{SubItemDatas>Quantity}"></Text>
+<Text text="{SubItemDatas>Price}"></Text>
+<Text text="{SubItemDatas>GrossAmount}"></Text>
+</cells>
+</ColumnListItem>
+</items>
+<columns>
+<Column  importance="High" >
+<Label text="Product Name"></Label>
+</Column>
+<Column demandPopin="true" minScreenWidth="543px"  importance="Low" >
+<Label text="Delivery Date"></Label>
+</Column>
+<Column importance="High">
+<Label text="Quantity"></Label>
+</Column>
+<Column demandPopin="true" minScreenWidth="543px"  importance="Low">
+<Label text="Price"></Label>
+</Column>
+<Column importance="High">
+<Label text="Gross Amount"></Label>
+</Column>
+</columns>
+</Table>
+</content>
+</Panel>
+</mvc:View>
