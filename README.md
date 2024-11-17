@@ -1,3 +1,4 @@
+view application link : https://salesorderpro.netlify.app/
 # salesOrder
 task for Procurement </br>
 Master Data and Detail Pages </br>
